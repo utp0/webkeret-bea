@@ -1,6 +1,7 @@
 .menu-bar {
     background-color: #333;
     padding: 10px;
+    color: white;
 }
 
 .menu-bar ul {
@@ -22,4 +23,8 @@
 
 .menu-bar a:hover {
     text-decoration: underline;
+}
+
+#spacer {
+    flex-grow: 1;
 }

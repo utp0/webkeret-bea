@@ -2,6 +2,7 @@ import { Component, inject, Input } from '@angular/core';
 import { OptionsService } from '../options.service';
 import { RouterLink } from '@angular/router';
 import { User } from '../model/User';
+import { ClientDataService } from '../client-data.service';
 
 @Component({
   selector: 'app-menu-bar',
@@ -10,12 +11,14 @@ import { User } from '../model/User';
   styleUrl: './menu-bar.component.css'
 })
 export class MenuBarComponent {
-  @Input("user") authedUser?: User = undefined;
-
+  authedUser?: User;
   siteName: string;
-  private options = inject(OptionsService);
-  constructor() {
+
+  constructor(
+    private options: OptionsService,
+    private clientData: ClientDataService
+  ) {
     this.siteName = this.options.siteName;
+    this.authedUser = this.clientData.user;
   }
 }
-
