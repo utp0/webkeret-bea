@@ -1,0 +1,8 @@
+<p>
+    <button *ngIf="shouldEmit == true" mat-button class="menu-item" routerLink="{{ routerTarget }}" (click)="btnPressed()">
+        <ng-content />
+    </button>
+    <button *ngIf="shouldEmit != true" mat-button class="menu-item" routerLink="{{ routerTarget }}">
+        <ng-content />
+    </button>
+</p>

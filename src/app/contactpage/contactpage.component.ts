@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './contactpage.component.css'
 })
 export class ContactpageComponent {
+  
 
 }

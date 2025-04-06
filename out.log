@@ -1,0 +1,1107 @@
+
++--------------------------------------------+
+| Dump tree for directory: . |
++--------------------------------------------+
+├── .editorconfig
+├── .gitignore
+├── README.md
+├── angular.json
+├── package.json
+├── public
+│  └── favicon.ico
+├── src
+│  ├── app
+│  │  ├── _testdata.ts
+│  │  ├── app.component.css
+│  │  ├── app.component.html
+│  │  ├── app.component.spec.ts
+│  │  ├── app.component.ts
+│  │  ├── app.config.ts
+│  │  ├── app.routes.ts
+│  │  ├── client-data.service.spec.ts
+│  │  ├── client-data.service.ts
+│  │  ├── contactpage
+│  │  │  ├── contactpage.component.css
+│  │  │  ├── contactpage.component.html
+│  │  │  ├── contactpage.component.spec.ts
+│  │  │  └── contactpage.component.ts
+│  │  ├── homepage
+│  │  │  ├── homepage.component.css
+│  │  │  ├── homepage.component.html
+│  │  │  ├── homepage.component.spec.ts
+│  │  │  └── homepage.component.ts
+│  │  ├── menu-bar
+│  │  │  ├── menu-bar.component.css
+│  │  │  ├── menu-bar.component.html
+│  │  │  ├── menu-bar.component.spec.ts
+│  │  │  └── menu-bar.component.ts
+│  │  ├── menu-item
+│  │  │  ├── menu-item.component.css
+│  │  │  ├── menu-item.component.html
+│  │  │  ├── menu-item.component.spec.ts
+│  │  │  └── menu-item.component.ts
+│  │  ├── model
+│  │  │  ├── Comment.ts
+│  │  │  ├── History.ts
+│  │  │  ├── User.ts
+│  │  │  └── Video.ts
+│  │  ├── options.service.spec.ts
+│  │  └── options.service.ts
+│  ├── index.html
+│  ├── main.ts
+│  └── styles.css
+├── tsconfig.app.json
+├── tsconfig.json
+└── tsconfig.spec.json
+
+
+
+--- Path: ./.editorconfig ---
+
+# Editor configuration, see https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.ts]
+quote_type = single
+ij_typescript_use_double_quotes = false
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+
+
+
+--- Path: ./.gitignore ---
+
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+
+
+
+--- Path: ./README.md ---
+
+# ProjektNeve
+
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
+
+## Development server
+
+To start a local development server, run:
+
+```bash
+ng serve
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+
+--- Path: ./angular.json ---
+
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "projekt-neve": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/projekt-neve",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
+              "src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "projekt-neve:build:production"
+            },
+            "development": {
+              "buildTarget": "projekt-neve:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+--- Path: ./package.json ---
+
+{
+  "name": "projekt-neve",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/cdk": "^19.2.8",
+    "@angular/common": "^19.2.0",
+    "@angular/compiler": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/forms": "^19.2.0",
+    "@angular/material": "^19.2.8",
+    "@angular/platform-browser": "^19.2.0",
+    "@angular/platform-browser-dynamic": "^19.2.0",
+    "@angular/router": "^19.2.0",
+    "jquery": "^3.7.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.2.6",
+    "@angular/cli": "^19.2.6",
+    "@angular/compiler-cli": "^19.2.0",
+    "@types/jasmine": "~5.1.0",
+    "jasmine-core": "~5.6.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.7.2"
+  }
+}
+
+
+--- Path: ./src/app/_testdata.ts ---
+
+import { Comment } from "./model/Comment";
+import { ViewHistory } from "./model/History";
+import { User } from "./model/User";
+import { Video } from "./model/Video";
+
+export const Users: User[] = [
+    {
+        id: "1",
+        email: "user@example.com",
+        registrationDate: 1743879316000,
+        username: "user",
+    },
+    {
+        id: "2",
+        email: "danika@example.com",
+        registrationDate: 1743879317000,
+        username: "danika09",
+    },
+    {
+        id: "3",
+        email: "throwaway@example.com",
+        registrationDate: 1743879318000,
+        username: "gamingtoilet007",
+    },
+];
+
+export const Videos: Video[] = [
+    {
+        id: "1",
+        length: 254,
+        originalUrl: "https://www.youtube.com/watch?v=9bZkp7q19f0",
+        shareDate: 1743879532365,
+        shareDescription: "ez egy felettéb vicces zenei videó ;DDDDDDDDDDDDD",
+        sharerId: "3",
+        title: "gangnam stiló",
+    },
+    {
+        id: "2",
+        length: 57,
+        originalUrl: "https://youtu.be/MVyM2GO5EXE",
+        shareDate: 1743879539365,
+        shareDescription: "hak tua h",
+        sharerId: "3",
+        title: "Bolondos Galambok",
+    },
+    {
+        id: "3",
+        length: 1181,
+        originalUrl: "https://www.youtube.com/watch?v=av1eTzsu0wA",
+        shareDate: 1743879856681,
+        shareDescription: "informatív videó a deepseek-r1 otthoni futtatásáról komoly érdeklődők számára",
+        sharerId: "1",
+        title: "DeepSeek-R1 otthon",
+    },
+];
+
+export const Comments: Comment[] = [
+    {
+        id: "1",
+        videoId: "3",
+        userId: "1",
+        content: "Nagyon jó nagyon tetszik, hatalmas!",
+        timestamp: 1743880059496,
+    },
+    {
+        id: "2",
+        videoId: "3",
+        userId: "3",
+        content: "ez mi, kinek kell ez hiha hihi",
+        timestamp: 1743880059496,
+    },
+    {
+        id: "3",
+        videoId: "2",
+        userId: "2",
+        content: "áh, egy klasszikus ... ;)",
+        timestamp: 1743880059496,
+    },
+];
+
+export const History: ViewHistory[] = [
+    {
+        userId: "3",
+        timestamp: 1743880057496,
+        videoId: "2",
+    },
+    {
+        userId: "2",
+        timestamp: 1743880055496,
+        videoId: "3",
+    },
+    {
+        userId: "1",
+        timestamp: 1743880054496,
+        videoId: "3",
+    },
+];
+
+
+
+--- Path: ./src/app/app.component.css ---
+
+#router-container {
+    margin: 4px;
+}
+
+html, body, .mat-sidenav-container {
+    height: 100%;
+    width: 100%;
+}
+
+
+--- Path: ./src/app/app.component.html ---
+
+<mat-sidenav-container class="mat-sidenav-container">
+    <mat-sidenav #sidenav mode="push">
+        <ng-container *ngFor="let item of routes">
+            <app-menu-item [routerTarget]="item.path!">
+                {{ item.data!['niceTitle'] }}
+            </app-menu-item>
+        </ng-container>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-menu-bar></app-menu-bar>
+        <div id="router-container">
+            <router-outlet />
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+--- Path: ./src/app/app.component.spec.ts ---
+
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'projekt-neve' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('projekt-neve');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, projekt-neve');
+  });
+});
+
+
+
+--- Path: ./src/app/app.component.ts ---
+
+import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { ClientDataService } from './client-data.service';
+import { MenuItemComponent } from './menu-item/menu-item.component';
+import { Users } from './_testdata';
+import {
+  MatSidenav, MatSidenavContainer, MatSidenavContent
+} from '@angular/material/sidenav';
+import { MatIcon } from '@angular/material/icon';
+import { routes } from './app.routes';
+import { NgFor } from '@angular/common';
+import { MenuBarComponent } from "./menu-bar/menu-bar.component";
+import { BooleanInput } from '@angular/cdk/coercion';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet,
+    MatSidenav, MatSidenavContainer, MatSidenavContent,
+    MatIcon, MenuItemComponent, NgFor, MenuBarComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  public routes = routes;
+
+  constructor(private clientData: ClientDataService) {
+    this.clientData.user = Users[0];  // testing user, majd firebase lesz MF2-re
+  }
+}
+
+
+
+--- Path: ./src/app/app.config.ts ---
+
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes, withComponentInputBinding())
+  ]
+};
+
+
+
+--- Path: ./src/app/app.routes.ts ---
+
+import { Routes } from '@angular/router';
+import { HomepageComponent } from './homepage/homepage.component';
+import { ContactpageComponent } from './contactpage/contactpage.component';
+
+export const routes: Routes = [
+    {
+        path: "",
+        component: HomepageComponent,
+        data: { niceTitle: "Kezdőlap" }
+    },
+    {
+        path: "contact",
+        component: ContactpageComponent,
+        data: { niceTitle: "Kapcsolat" }
+    },
+];
+
+
+
+--- Path: ./src/app/client-data.service.spec.ts ---
+
+import { TestBed } from '@angular/core/testing';
+
+import { ClientDataService } from './client-data.service';
+
+describe('ClientDataService', () => {
+  let service: ClientDataService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ClientDataService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
+
+
+
+--- Path: ./src/app/client-data.service.ts ---
+
+import { Injectable } from '@angular/core';
+import { User } from './model/User';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ClientDataService {
+  user: User | undefined = undefined;
+}
+
+
+
+--- Path: ./src/app/contactpage/contactpage.component.css ---
+
+
+
+
+--- Path: ./src/app/contactpage/contactpage.component.html ---
+
+<p>contactpage works!</p>
+
+
+
+--- Path: ./src/app/contactpage/contactpage.component.spec.ts ---
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ContactpageComponent } from './contactpage.component';
+
+describe('ContactpageComponent', () => {
+  let component: ContactpageComponent;
+  let fixture: ComponentFixture<ContactpageComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ContactpageComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(ContactpageComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+
+--- Path: ./src/app/contactpage/contactpage.component.ts ---
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-contactpage',
+  imports: [],
+  templateUrl: './contactpage.component.html',
+  styleUrl: './contactpage.component.css'
+})
+export class ContactpageComponent {
+  
+
+}
+
+
+
+--- Path: ./src/app/homepage/homepage.component.css ---
+
+
+
+
+--- Path: ./src/app/homepage/homepage.component.html ---
+
+<p>homepage works!</p>
+
+<router-outlet/>
+
+
+--- Path: ./src/app/homepage/homepage.component.spec.ts ---
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { HomepageComponent } from './homepage.component';
+
+describe('HomepageComponent', () => {
+  let component: HomepageComponent;
+  let fixture: ComponentFixture<HomepageComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HomepageComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(HomepageComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+
+--- Path: ./src/app/homepage/homepage.component.ts ---
+
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-homepage',
+  imports: [RouterOutlet],
+  templateUrl: './homepage.component.html',
+  styleUrl: './homepage.component.css'
+})
+export class HomepageComponent {
+  
+
+}
+
+
+
+--- Path: ./src/app/menu-bar/menu-bar.component.css ---
+
+.menu-bar {
+    background-color: #333;
+    padding: 10px;
+    color: white;
+}
+
+.menu-bar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu-bar li {
+    margin-right: 20px;
+}
+
+.menu-bar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.menu-bar a:hover {
+    text-decoration: underline;
+}
+
+#spacer {
+    flex-grow: 1;
+}
+
+
+--- Path: ./src/app/menu-bar/menu-bar.component.html ---
+
+<nav class="menu-bar">
+    <ul>
+        <li>
+            <a>
+                <app-menu-item>
+                    <mat-icon>menu</mat-icon>
+                </app-menu-item>
+            </a>
+        </li>
+        <div id="spacer"></div>
+        <li><span>{{authedUser?.username}}</span></li>
+    </ul>
+</nav>
+
+
+--- Path: ./src/app/menu-bar/menu-bar.component.spec.ts ---
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { MenuBarComponent } from './menu-bar.component';
+
+describe('MenuBarComponent', () => {
+  let component: MenuBarComponent;
+  let fixture: ComponentFixture<MenuBarComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [MenuBarComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(MenuBarComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+
+--- Path: ./src/app/menu-bar/menu-bar.component.ts ---
+
+import { Component, EventEmitter, inject, Input, Output, ViewChild } from '@angular/core';
+import { OptionsService } from '../options.service';
+import { User } from '../model/User';
+import { ClientDataService } from '../client-data.service';
+import { MatButton } from '@angular/material/button';
+import { MenuItemComponent } from "../menu-item/menu-item.component";
+import { MatIcon } from "@angular/material/icon";
+import { MatSidenav } from '@angular/material/sidenav';
+
+@Component({
+  selector: 'app-menu-bar',
+  imports: [MenuItemComponent, MatIcon],
+  templateUrl: './menu-bar.component.html',
+  styleUrl: './menu-bar.component.css'
+})
+export class MenuBarComponent {
+  authedUser?: User;
+  siteName: string;
+
+  @ViewChild("sidenav") sidenav!: MatSidenav;
+
+  toggleSidenav() {
+    this.sidenav.toggle();
+  }
+
+  constructor(
+    private options: OptionsService,
+    private clientData: ClientDataService
+  ) {
+    this.siteName = this.options.siteName;
+    this.authedUser = this.clientData.user;
+  }
+}
+
+
+
+--- Path: ./src/app/menu-item/menu-item.component.css ---
+
+
+
+
+--- Path: ./src/app/menu-item/menu-item.component.html ---
+
+<p>
+    <button *ngIf="shouldEmit == true" mat-button class="menu-item" routerLink="{{ routerTarget }}" (click)="btnPressed()">
+        <ng-content />
+    </button>
+    <button *ngIf="shouldEmit != true" mat-button class="menu-item" routerLink="{{ routerTarget }}">
+        <ng-content />
+    </button>
+</p>
+
+
+--- Path: ./src/app/menu-item/menu-item.component.spec.ts ---
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { MenuItemComponent } from './menu-item.component';
+
+describe('MenuItemComponent', () => {
+  let component: MenuItemComponent;
+  let fixture: ComponentFixture<MenuItemComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [MenuItemComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(MenuItemComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+
+
+
+--- Path: ./src/app/menu-item/menu-item.component.ts ---
+
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Route, RouterLink } from '@angular/router';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+
+
+@Component({
+  selector: 'app-menu-item',
+  imports: [RouterLink,
+    MatButton, NgIf
+  ],
+  templateUrl: './menu-item.component.html',
+  styleUrl: './menu-item.component.css'
+})
+export class MenuItemComponent {
+  @Input() routerTarget?: string;
+  @Input() shouldEmit?: boolean = false;
+  @Output() btnPressedEmitter: EventEmitter<void> = new EventEmitter<void>();
+
+  btnPressed() {
+    if (this.shouldEmit) this.btnPressedEmitter.emit();
+  }
+}
+
+
+--- Path: ./src/app/model/Comment.ts ---
+
+export interface Comment {
+    id: string;
+    videoId: string;
+    userId: string;
+    content: string;
+    timestamp: number;  // unix
+}
+
+
+
+--- Path: ./src/app/model/History.ts ---
+
+export interface ViewHistory {
+    userId: string;
+    videoId: string;
+    timestamp: number;  // unix
+}
+
+
+
+--- Path: ./src/app/model/User.ts ---
+
+export interface User {
+    id: string;
+    username: string;
+    email: string;
+    registrationDate: number;  // unix
+}
+
+
+--- Path: ./src/app/model/Video.ts ---
+
+export interface Video {
+    id: string;
+    title: string;
+    originalUrl: string;
+    length: number;  // seconds
+    sharerId: string;
+    shareDescription: string;
+    shareDate: number;  // unix time
+}
+
+
+--- Path: ./src/app/options.service.spec.ts ---
+
+import { TestBed } from '@angular/core/testing';
+
+import { OptionsService } from './options.service';
+
+describe('OptionsService', () => {
+  let service: OptionsService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(OptionsService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
+
+
+
+--- Path: ./src/app/options.service.ts ---
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class OptionsService {
+  readonly siteName = "VidWide";
+}
+
+
+
+--- Path: ./src/index.html ---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ProjektNeve</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+
+
+
+--- Path: ./src/main.ts ---
+
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));
+
+
+
+--- Path: ./src/styles.css ---
+
+/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+--- Path: ./tsconfig.app.json ---
+
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "src/main.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}
+
+
+
+--- Path: ./tsconfig.json ---
+
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "bundler",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022"
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
+
+
+
+--- Path: ./tsconfig.spec.json ---
+
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jasmine"
+    ]
+  },
+  "include": [
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
+  ]
+}
+

@@ -1,7 +1,12 @@
 <nav class="menu-bar">
     <ul>
-        <li><a routerLink="/" routerLinkActive="active">Kezdőlap</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active">Kapcsolat</a></li>
+        <li>
+            <a (click)="toggleSidenav()">
+                <app-menu-item>
+                    <mat-icon>menu</mat-icon>
+                </app-menu-item>
+            </a>
+        </li>
         <div id="spacer"></div>
         <li><span>{{authedUser?.username}}</span></li>
     </ul>
