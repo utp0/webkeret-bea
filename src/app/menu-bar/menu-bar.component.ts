@@ -2,14 +2,14 @@ import { Component, EventEmitter, inject, Input, Output, ViewChild } from '@angu
 import { OptionsService } from '../options.service';
 import { User } from '../model/User';
 import { ClientDataService } from '../client-data.service';
-import { MatButton } from '@angular/material/button';
-import { MenuItemComponent } from "../menu-item/menu-item.component";
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MenuItemComponent } from "../small-components/menu-item/menu-item.component";
 import { MatIcon } from "@angular/material/icon";
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-menu-bar',
-  imports: [MenuItemComponent, MatIcon],
+  imports: [MenuItemComponent, MatIcon, MatIconButton],
   templateUrl: './menu-bar.component.html',
   styleUrl: './menu-bar.component.css'
 })

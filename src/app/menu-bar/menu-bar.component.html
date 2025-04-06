@@ -1,11 +1,9 @@
 <nav class="menu-bar">
     <ul>
         <li>
-            <a (click)="toggleSidenav()">
-                <app-menu-item>
-                    <mat-icon>menu</mat-icon>
-                </app-menu-item>
-            </a>
+            <button mat-icon-button (click)="toggleSidenav()">
+                <mat-icon>menu</mat-icon>
+            </button>
         </li>
         <div id="spacer"></div>
         <li><span>{{authedUser?.username}}</span></li>

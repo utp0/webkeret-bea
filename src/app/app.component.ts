@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ClientDataService } from './client-data.service';
-import { MenuItemComponent } from './menu-item/menu-item.component';
+import { MenuItemComponent } from './small-components/menu-item/menu-item.component';
 import { Users } from './_testdata';
 import {
   MatSidenav, MatSidenavContainer, MatSidenavContent
@@ -15,8 +15,7 @@ import { BooleanInput } from '@angular/cdk/coercion';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,
-    MatSidenav, MatSidenavContainer, MatSidenavContent,
-    MatIcon, MenuItemComponent, NgFor, MenuBarComponent],
+    MatSidenav, MatSidenavContainer, MatSidenavContent, MenuItemComponent, NgFor, MenuBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
