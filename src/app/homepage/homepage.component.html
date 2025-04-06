@@ -1,3 +1,6 @@
-<p>homepage works!</p>
+<div *ngFor="let video of videos">
+    <app-video-listitem [video]="video"></app-video-listitem>
+</div>
 
-<router-outlet/>
+
+<router-outlet />

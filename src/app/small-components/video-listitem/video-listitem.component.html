@@ -1,0 +1,27 @@
+<div class="video-list-item">
+    <h3>
+        {{ video.title }}
+    </h3>
+    <p>
+        {{ video.shareDescription }}
+    </p>
+    <p><strong>Hossz:</strong>
+        {{ video.length | secsToHumantime }}
+    </p>
+    <p><strong>Megosztó:</strong>
+        {{ video.sharerId }}
+    </p>
+    <p><strong>Megosztva:</strong>
+        {{ video.shareDate | unixToHumandatetime }}
+    </p>
+    <p *ngIf="viewTimestamp">
+        <strong>Megtekintve:</strong>
+        {{ viewTimestamp! | unixToHumandatetime }}
+    </p>
+    <p>
+        <a href="{{video.originalUrl}}" target="_blank">Videó megnyitása</a>
+    </p>
+    <p>
+        <a [routerLink]="['/video-comments', video.id]">Kommentek megtekintése</a>
+    </p>
+</div>

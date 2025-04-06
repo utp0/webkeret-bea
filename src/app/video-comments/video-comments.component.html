@@ -1,0 +1,20 @@
+<div class="comments-container">
+    <h2>Kommentek a videóhoz (ID: {{videoId}})</h2>
+    <div *ngIf="errorMessage" class="error">
+        {{errorMessage}}
+    </div>
+    <div *ngIf="!errorMessage">
+        <div *ngIf="comments.length === 0" class="no-comments">
+            Ehhez a videóhoz még nincsenek kommentek.
+        </div>
+        <div *ngFor="let comment of comments" class="comment">
+            <div class="comment-header">
+                <strong>{{comment.userId}}</strong>
+                <span class="comment-date">{{comment.timestamp | unixToHumandatetime}}</span>
+            </div>
+            <div class="comment-text">
+                {{comment.content}}
+            </div>
+        </div>
+    </div>
+</div>

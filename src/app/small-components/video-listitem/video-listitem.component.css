@@ -1,0 +1,24 @@
+.video-list-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #201818;
+}
+
+.video-list-item h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.video-list-item p {
+    margin: 5px 0;
+}
+
+a {
+    color: rgb(127, 255, 212);
+}
+
+a:visited {
+    color: rgb(0, 121, 121);
+}

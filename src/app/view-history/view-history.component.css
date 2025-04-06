@@ -1,0 +1,81 @@
+/* Stílusok az előzmények konténerhez és elemekhez */
+.history-container {
+    max-width: 900px;
+    /* Vagy amilyen széles szeretnéd */
+    margin: 20px auto;
+    padding: 20px;
+    color: white;
+    /* Feltételezve a sötét témát */
+    background-color: rgb(41, 46, 51);
+    /* Háttér, mint a mat-sidenav-content */
+    border-radius: 8px;
+}
+
+.history-container h2 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+}
+
+.loading,
+.error,
+.no-history {
+    padding: 20px;
+    text-align: center;
+    color: #ccc;
+}
+
+.error {
+    color: #f88;
+    /* Világosabb piros sötét háttéren */
+    background-color: #401010;
+    /* Sötét pirosas háttér */
+    border: 1px solid #802020;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    border: 1px solid #444;
+    /* Sötétebb keret */
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #201818;
+    /* Mint a video-listitem */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.history-item:hover {
+    background-color: #2a2020;
+    /* Enyhe kiemelés hover esetén */
+}
+
+.video-details h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2em;
+    /* Kicsit nagyobb cím */
+}
+
+.video-details h3 a {
+    color: rgb(127, 255, 212);
+    /* Aquamarine - mint a video-listitem link */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.video-details h3 a:hover {
+    text-decoration: underline;
+}
+
+.video-details h3 a:visited {
+    color: rgb(0, 121, 121);
+    /* Sötétebb türkiz a látogatott linkekhez */
+}
+
+.view-time {
+    font-size: 0.9em;
+    color: #bbb;
+    /* Halványabb szín az időbélyegnek */
+    margin-top: 5px;
+}

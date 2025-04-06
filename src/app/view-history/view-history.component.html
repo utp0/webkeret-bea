@@ -1,0 +1,16 @@
+<div class="history-container">
+    <h2>Megtekintési Előzmények</h2>
+    <div *ngIf="errorMessage" class="error">
+        {{errorMessage}}
+    </div>
+    <div *ngIf="!errorMessage">
+        <div *ngIf="userHistory.length === 0" class="no-history">
+            Nincsenek megtekintési előzmények.
+        </div>
+
+        <div *ngFor="let entry of userHistory" class="history-list-item-wrapper">
+            <app-video-listitem [video]="entry.video" [viewTimestamp]="entry.timestamp">
+            </app-video-listitem>
+        </div>
+    </div>
+</div>

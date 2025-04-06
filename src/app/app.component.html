@@ -1,9 +1,11 @@
 <mat-sidenav-container class="mat-sidenav-container">
     <mat-sidenav id="mat-sidenav" #sidenav mode="push">
         <ng-container *ngFor="let item of routes">
+            @if (!item.data || !item.data["hide"]) {
             <app-menu-item [routerTarget]="item.path!">
                 {{ item.data!['niceTitle'] }}
             </app-menu-item>
+            }
         </ng-container>
     </mat-sidenav>
     <mat-sidenav-content id="mat-sidenav-content">
