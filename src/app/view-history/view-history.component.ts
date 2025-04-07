@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { UnixToHumandatetimePipe } from '../unix-to-humandatetime.pipe';
-import { RouterLink } from '@angular/router';
 import { User } from '../model/User';
 import { HistoryEntry, HistoryService } from '../history.service';
 import { ClientDataService } from '../client-data.service';
@@ -11,8 +9,6 @@ import { VideoListitemComponent } from '../small-components/video-listitem/video
   selector: 'app-view-history',
   imports: [
     CommonModule,
-    UnixToHumandatetimePipe,
-    RouterLink,
     VideoListitemComponent
   ],
   templateUrl: './view-history.component.html',
@@ -21,7 +17,7 @@ import { VideoListitemComponent } from '../small-components/video-listitem/video
 export class ViewHistoryComponent {
   authedUser: User | undefined;
   userHistory: HistoryEntry[] = [];
-  errorMessage = ''; // Hibaüzenet tárolása
+  errorMessage = '';
 
   constructor(
     private clientData: ClientDataService,
