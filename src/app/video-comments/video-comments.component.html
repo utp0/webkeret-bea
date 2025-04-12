@@ -1,5 +1,6 @@
 <div class="comments-container">
     <h2>Kommentek a videóhoz (ID: {{videoId}})</h2>
+    <app-comment-form *ngIf="videoId" [videoId]="videoId" (commentSubmitted)="loadComments()" />
     <div *ngIf="errorMessage" class="error">
         {{errorMessage}}
     </div>
@@ -9,7 +10,7 @@
         </div>
         <div *ngFor="let comment of comments" class="comment">
             <div class="comment-header">
-                <strong>{{comment.userId}}</strong>
+                <strong>{{comment.userId | userIdToUsername}}</strong>
                 <span class="comment-date">{{comment.timestamp | unixToHumandatetime}}</span>
             </div>
             <div class="comment-text">

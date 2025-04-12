@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { Route, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
 
 
 @Component({
@@ -16,9 +15,9 @@ import { MatIcon } from '@angular/material/icon';
 export class MenuItemComponent {
   @Input() routerTarget?: string;
   @Input() shouldEmit?: boolean = false;
-  @Output() btnPressedEmitter: EventEmitter<void> = new EventEmitter<void>();
+  // @Output() btnPressedEmitter: EventEmitter<void> = new EventEmitter<void>();
 
   btnPressed() {
-    if (this.shouldEmit) this.btnPressedEmitter.emit();
+    // if (this.shouldEmit) this.btnPressedEmitter.emit();
   }
 }

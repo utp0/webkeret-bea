@@ -3,7 +3,7 @@ import { ViewHistory } from "./model/History";
 import { User } from "./model/User";
 import { Video } from "./model/Video";
 
-export const Users: User[] = [
+export let Users: User[] = [
     {
         id: "1",
         email: "user@example.com",
@@ -24,7 +24,7 @@ export const Users: User[] = [
     },
 ];
 
-export const Videos: Video[] = [
+export let Videos: Video[] = [
     {
         id: "1",
         length: 254,
@@ -54,7 +54,7 @@ export const Videos: Video[] = [
     },
 ];
 
-export const Comments: Comment[] = [
+export let Comments: Comment[] = [
     {
         id: "1",
         videoId: "3",
@@ -78,7 +78,7 @@ export const Comments: Comment[] = [
     },
 ];
 
-export const History: ViewHistory[] = [
+export let History: ViewHistory[] = [
     {
         userId: "3",
         timestamp: 1743880057496,

@@ -1,3 +1,5 @@
+<app-video-share-form (videoShared)="refreshVideos()"></app-video-share-form>
+
 <div *ngFor="let video of videos">
     <app-video-listitem [video]="video"></app-video-listitem>
 </div>

@@ -1,0 +1,12 @@
+<div *ngIf="currentUser" class="comment-form-container">
+    <mat-form-field appearance="fill">
+        <mat-label>Új komment írása</mat-label>
+        <textarea matInput [(ngModel)]="commentText" rows="3" placeholder="Írd ide a kommentet..."></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="submitComment()" [disabled]="!commentText.trim()">
+        Küldés
+    </button>
+</div>
+<div *ngIf="!currentUser">
+    <p>Komment írásához jelentkezz be.</p>
+</div>

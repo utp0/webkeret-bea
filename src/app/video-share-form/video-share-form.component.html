@@ -1,0 +1,35 @@
+<div class="video-share-form-container">
+    <h3 *ngIf="currentUser">Új videó megosztása</h3>
+    <div *ngIf="currentUser">
+        <mat-form-field appearance="fill">
+            <mat-label>Videó címe</mat-label>
+            <input matInput [(ngModel)]="title" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Leírás</mat-label>
+            <textarea matInput [(ngModel)]="description" rows="3" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Videó URL</mat-label>
+            <input matInput [(ngModel)]="url" required placeholder="https://...">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Hossz (másodperc)</mat-label>
+            <input matInput type="number" [(ngModel)]="lengthInSeconds" required min="1">
+        </mat-form-field>
+
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+
+        <button mat-raised-button color="accent" (click)="shareVideo()" [disabled]="!isFormValid()">
+            Megosztás
+        </button>
+    </div>
+    <div *ngIf="!currentUser">
+        <p>Videó megosztásához jelentkezz be.</p>
+    </div>
+</div>
