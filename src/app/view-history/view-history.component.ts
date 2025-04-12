@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { User } from '../model/User';
-import { HistoryEntry, HistoryService } from '../history.service';
+import { HistoryEntry, HistoryService } from '../services/history.service';
 import { ClientDataService } from '../client-data.service';
 import { VideoListitemComponent } from '../small-components/video-listitem/video-listitem.component';
 

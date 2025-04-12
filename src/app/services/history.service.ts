@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Video } from './model/Video';
-import { ViewHistory } from './model/History';
-import { History, Videos } from './_testdata';
+import { Video } from '../model/Video';
+import { ViewHistory } from '../model/History';
+import { History, Videos } from '../_testdata';
 
 export interface HistoryEntry {
   timestamp: number,

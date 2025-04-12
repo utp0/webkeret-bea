@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CommentsService } from '../comments.service';
+import { CommentsService } from '../services/comments.service';
 import { Comment } from '../model/Comment';
 import { NgFor, NgIf } from '@angular/common';
 import { UnixToHumandatetimePipe } from '../unix-to-humandatetime.pipe';

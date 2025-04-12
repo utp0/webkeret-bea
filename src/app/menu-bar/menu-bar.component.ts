@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, Output, ViewChild } from '@angular/core';
-import { OptionsService } from '../options.service';
+import { OptionsService } from '../services/options.service';
 import { User } from '../model/User';
 import { ClientDataService } from '../client-data.service';
 import { MatIconButton } from '@angular/material/button';
