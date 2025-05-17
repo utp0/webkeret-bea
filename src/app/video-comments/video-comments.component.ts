@@ -1,41 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CommentsService } from '../services/comments.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from '../model/Comment';
-import { NgFor, NgIf } from '@angular/common';
-import { UnixToHumandatetimePipe } from '../unix-to-humandatetime.pipe';
+import { CommentsService } from '../services/comments.service';
+import { AsyncPipe, DatePipe, NgFor, NgIf } from '@angular/common';
 import { CommentFormComponent } from './comment-form/comment-form.component';
 import { UserIdToUsernamePipe } from '../user-id-to-username.pipe';
+import { Observable } from 'rxjs';
+import { UnixToHumandatetimePipe } from '../unix-to-humandatetime.pipe';
 
 @Component({
   selector: 'app-video-comments',
-  imports: [NgIf, NgFor, UnixToHumandatetimePipe, CommentFormComponent, UserIdToUsernamePipe],
+  standalone: true,
+  imports: [NgFor, AsyncPipe, DatePipe, CommentFormComponent, UserIdToUsernamePipe, NgIf, UnixToHumandatetimePipe],
   templateUrl: './video-comments.component.html',
   styleUrl: './video-comments.component.css'
 })
 export class VideoCommentsComponent implements OnInit {
-  videoId!: string | null;
-  comments: Comment[] = [];
-  errorMessage = '';
+  @Input() videoId!: string;
+  comments$!: Observable<Comment[]>;
+  errorMessage: string | null = null;
 
-  constructor(private route: ActivatedRoute,
-    private commentService: CommentsService
-  ) { }
+  constructor(private commentService: CommentsService) { }
 
   ngOnInit(): void {
-    this.videoId = this.route.snapshot.paramMap.get("id");
     this.loadComments();
   }
 
   loadComments(): void {
-    if (!this.videoId) {
-      this.errorMessage = 'Nincs megadva videó azonosító';
-      return;
+    if (this.videoId) {
+      this.comments$ = this.commentService.getCommentsByVideoId(this.videoId);
+    } else {
+      this.errorMessage = "Videóazonosító hiányzik.";
     }
-    this.errorMessage = "";
-    // MF2 firebase-hez try-catch v vmi annak megfelelő kéne ide meg sok máshova is
-    this.comments = this.commentService.getCommentsByVideoId(this.videoId);
-    this.comments.sort((a, b) => b.timestamp - a.timestamp);
   }
-
 }

@@ -5,16 +5,19 @@
         {{errorMessage}}
     </div>
     <div *ngIf="!errorMessage">
-        <div *ngIf="comments.length === 0" class="no-comments">
-            Ehhez a videóhoz még nincsenek kommentek.
-        </div>
-        <div *ngFor="let comment of comments" class="comment">
-            <div class="comment-header">
-                <strong>{{comment.userId | userIdToUsername}}</strong>
-                <span class="comment-date">{{comment.timestamp | unixToHumandatetime}}</span>
+        <div *ngIf="comments$ | async as comments">
+            <div *ngIf="comments.length === 0" class="no-comments">
+                Ehhez a videóhoz még nincsenek kommentek.
             </div>
-            <div class="comment-text">
-                {{comment.content}}
+            <div *ngFor="let comment of comments" class="comment">
+                <div class="comment-header">
+                    <strong>
+                        {{ (comment.userId | userIdToUsername | async) || 'User...' }}</strong>
+                    <span class="comment-date">{{comment.timestamp | unixToHumandatetime}}</span>
+                </div>
+                <div class="comment-text">
+                    {{comment.content}}
+                </div>
             </div>
         </div>
     </div>

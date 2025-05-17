@@ -3,11 +3,12 @@ import { Video } from '../../model/Video';
 import { SecsToHumantimePipe } from "../../secs-to-humantime.pipe";
 import { UnixToHumandatetimePipe } from "../../unix-to-humandatetime.pipe";
 import { RouterLink } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { UserIdToUsernamePipe } from '../../user-id-to-username.pipe';
 
 @Component({
   selector: 'app-video-listitem',
-  imports: [SecsToHumantimePipe, UnixToHumandatetimePipe, RouterLink, NgIf],
+  imports: [SecsToHumantimePipe, UnixToHumandatetimePipe, RouterLink, NgIf, UserIdToUsernamePipe, AsyncPipe],
   templateUrl: './video-listitem.component.html',
   styleUrl: './video-listitem.component.css'
 })

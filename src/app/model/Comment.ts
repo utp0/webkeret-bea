@@ -1,7 +1,9 @@
+import { DocumentReference } from "@angular/fire/firestore"; 
+
 export interface Comment {
     id: string;
-    videoId: string;
-    userId: string;
+    videoId: DocumentReference;
+    userId: DocumentReference;
     content: string;
-    timestamp: number;  // unix
+    timestamp: number;
 }

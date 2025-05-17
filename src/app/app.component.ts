@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ClientDataService } from './client-data.service';
 import { MenuItemComponent } from './small-components/menu-item/menu-item.component';
-import { Users } from './_testdata';
 import {
   MatSidenav, MatSidenavContainer, MatSidenavContent
 } from '@angular/material/sidenav';
@@ -21,6 +20,6 @@ export class AppComponent {
   public routes = routes;
 
   constructor(private clientData: ClientDataService) {
-    this.clientData.user = Users[0];  // testing user, majd firebase lesz MF2-re
+    //this.clientData.user = Users[0];  // testing user, majd firebase lesz MF2-re
   }
 }
