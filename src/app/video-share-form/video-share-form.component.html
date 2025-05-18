@@ -33,7 +33,7 @@
             </button>
         </form>
     </div>
-    <div *ngIf="!(authService.currentUser$ | async)">
+    <div *ngIf="!(authService.firebaseUser$ | async)">
         <p>Videó megosztásához jelentkezz be.</p>
     </div>
 </div>

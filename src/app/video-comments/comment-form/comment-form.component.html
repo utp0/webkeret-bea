@@ -9,6 +9,6 @@
         </button>
     </form>
 </div>
-<div *ngIf="!(authService.currentUser$ | async)">
+<div *ngIf="!(authService.firebaseUser$ | async)">
     <p>Komment írásához jelentkezz be.</p>
 </div>

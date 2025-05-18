@@ -53,6 +53,7 @@ export class VideoShareFormComponent implements OnInit {
 
     const currentUser = this.authService.getCurrentUser();
     if (!currentUser || !currentUser.id) {
+      console.error(currentUser);
       this.errorMessage = "Videó megosztásához jelentkezzen be.";
       this.isSubmitting = false;
       return;

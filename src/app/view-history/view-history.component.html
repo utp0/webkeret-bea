@@ -1,7 +1,7 @@
 <div class="history-container">
     <h2>Megtekintési Előzmények</h2>
 
-    <div *ngIf="errorMessage && !(authService.currentUser$ | async)" class="error">
+    <div *ngIf="errorMessage && !(authService.firebaseUser$ | async)" class="error">
         {{errorMessage}}
     </div>
 

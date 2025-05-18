@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { HistoryService } from '../services/history.service';
 import { ViewHistory } from '../model/History';
-import { UserIdToUsernamePipe } from '../user-id-to-username.pipe';
 import { Observable, of } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { switchMap, tap } from 'rxjs/operators'; //
-import { VideoListitemComponent } from '../small-components/video-listitem/video-listitem.component';
 import { VideoIdToVideoTitlePipe } from "../video-it-to-video-title.pipe";
 
 @Component({
@@ -15,10 +12,7 @@ import { VideoIdToVideoTitlePipe } from "../video-it-to-video-title.pipe";
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
-    UserIdToUsernamePipe,
     VideoIdToVideoTitlePipe,
-    VideoListitemComponent,
     VideoIdToVideoTitlePipe
   ],
   templateUrl: './view-history.component.html',
