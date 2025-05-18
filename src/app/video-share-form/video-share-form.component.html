@@ -1,35 +1,39 @@
 <div class="video-share-form-container">
-    <h3 *ngIf="currentUser">Új videó megosztása</h3>
-    <div *ngIf="currentUser">
-        <mat-form-field appearance="fill">
-            <mat-label>Videó címe</mat-label>
-            <input matInput [(ngModel)]="title" required>
-        </mat-form-field>
+    <h3 *ngIf="authService.firebaseUser$ | async as firebaseUser">Új videó megosztása</h3>
+    <div *ngIf="authService.firebaseUser$ | async as firebaseUser">
+        <form [formGroup]="videoForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="fill">
+                <mat-label>Videó címe</mat-label>
+                <input matInput formControlName="title" required>
+            </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Leírás</mat-label>
-            <textarea matInput [(ngModel)]="description" rows="3" required></textarea>
-        </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Leírás</mat-label>
+                <textarea matInput formControlName="shareDescription" rows="3" required></textarea>
+            </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Videó URL</mat-label>
-            <input matInput [(ngModel)]="url" required placeholder="https://...">
-        </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Videó URL</mat-label>
+                <input matInput formControlName="originalUrl" required placeholder="https://...">
+                <mat-error *ngIf="videoForm.get('originalUrl')?.hasError('pattern') && videoForm.get('originalUrl')?.touched">
+                    Érvénytelen URL formátum.
+                </mat-error>
+            </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Hossz (másodperc)</mat-label>
-            <input matInput type="number" [(ngModel)]="lengthInSeconds" required min="1">
-        </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Hossz (másodperc)</mat-label>
+                <input matInput type="number" formControlName="length" required min="1">
+            </mat-form-field>
 
-        <div *ngIf="errorMessage" class="error-message">
-            {{ errorMessage }}
-        </div>
-
-        <button mat-raised-button color="accent" (click)="shareVideo()" [disabled]="!isFormValid()">
-            Megosztás
-        </button>
+            <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+            </div>
+            <button mat-raised-button color="accent" type="submit" [disabled]="videoForm.invalid || isSubmitting">
+                Megosztás
+            </button>
+        </form>
     </div>
-    <div *ngIf="!currentUser">
+    <div *ngIf="!(authService.firebaseUser$ | async)">
         <p>Videó megosztásához jelentkezz be.</p>
     </div>
 </div>

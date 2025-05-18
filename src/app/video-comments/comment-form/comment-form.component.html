@@ -1,12 +1,14 @@
-<div *ngIf="currentUser" class="comment-form-container">
-    <mat-form-field appearance="fill">
-        <mat-label>Új komment írása</mat-label>
-        <textarea matInput [(ngModel)]="commentText" rows="3" placeholder="Írd ide a kommentet..."></textarea>
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="submitComment()" [disabled]="!commentText.trim()">
-        Küldés
-    </button>
+<div *ngIf="authService.firebaseUser$ | async as firebaseUser" class="comment-form-container">
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Új komment írása</mat-label>
+            <textarea matInput formControlName="content" rows="3" placeholder="Írd ide a kommentet..."></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="commentForm.invalid || isSubmitting">
+            Küldés
+        </button>
+    </form>
 </div>
-<div *ngIf="!currentUser">
+<div *ngIf="!(authService.firebaseUser$ | async)">
     <p>Komment írásához jelentkezz be.</p>
 </div>

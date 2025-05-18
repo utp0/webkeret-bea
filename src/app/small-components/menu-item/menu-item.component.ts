@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-menu-item',
+  standalone: true,
   imports: [RouterLink,
-    MatButton, NgIf
+    MatButtonModule, NgIf
   ],
   templateUrl: './menu-item.component.html',
   styleUrl: './menu-item.component.css'
@@ -15,9 +16,11 @@ import { MatButton } from '@angular/material/button';
 export class MenuItemComponent {
   @Input() routerTarget?: string;
   @Input() shouldEmit?: boolean = false;
-  // @Output() btnPressedEmitter: EventEmitter<void> = new EventEmitter<void>();
+  @Output() btnPressedEmitter: EventEmitter<void> = new EventEmitter<void>();
 
   btnPressed() {
-    // if (this.shouldEmit) this.btnPressedEmitter.emit();
+    if (this.shouldEmit === true) {
+      this.btnPressedEmitter.emit();
+    }
   }
 }

@@ -1,24 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { AsyncPipe, NgFor } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { Videos } from '../_testdata';
 import { VideoListitemComponent } from "../small-components/video-listitem/video-listitem.component";
 import { VideoShareFormComponent } from '../video-share-form/video-share-form.component';
+import { Video } from '../model/Video';
+import { VideosService } from '../services/videos.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
-  imports: [RouterOutlet, VideoListitemComponent, NgFor, VideoShareFormComponent],
+  standalone: true,
+  imports: [RouterOutlet, VideoListitemComponent, NgFor, VideoShareFormComponent, AsyncPipe],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })
 export class HomepageComponent implements OnInit {
-  videos = Videos;
+  videos$!: Observable<Video[]>;
+
+  constructor(private videosService: VideosService) {}
 
   ngOnInit(): void {
     this.refreshVideos();
   }
 
   refreshVideos(): void {
-    this.videos = Videos.sort((a, b) => b.shareDate - a.shareDate);
+    this.videos$ = this.videosService.getAllVideos();
   }
 }

@@ -41,3 +41,12 @@ testem.log
 .DS_Store
 Thumbs.db
 *.log
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
+
+
+videomegoszto-1d59d-firebase-adminsdk-fbsvc-86e1dcca09.json
+Untitled-*.js

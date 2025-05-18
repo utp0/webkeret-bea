@@ -1,81 +1,83 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ClientDataService } from '../client-data.service';
-import { Videos } from '../_testdata';
-import { Video } from '../model/Video';
-import { NgIf } from '@angular/common';
-import { User } from '../model/User';
+import { CommonModule, NgIf } from '@angular/common';
+import { VideosService } from '../services/videos.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-video-share-form',
   standalone: true,
   imports: [
-    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    NgIf
+    CommonModule
+
   ],
   templateUrl: './video-share-form.component.html',
   styleUrl: './video-share-form.component.css'
 })
-export class VideoShareFormComponent {
-  @Output() videoShared = new EventEmitter<void>();
-  title: string = '';
-  description: string = '';
-  url: string = '';
-  lengthInSeconds: number | null = null;
-  currentUser: User | undefined = undefined;
+export class VideoShareFormComponent implements OnInit {
+  videoForm!: FormGroup;
+  isSubmitting = false;
   errorMessage: string = '';
 
-  constructor(private clientData: ClientDataService) {
-    this.currentUser = this.clientData.user;
+  @Output() videoShared = new EventEmitter<void>();
+
+  constructor(
+    private fb: FormBuilder,
+    private videosService: VideosService,
+    public authService: AuthService
+  ) { }
+
+  ngOnInit(): void {
+    this.videoForm = this.fb.group({
+      title: ['', Validators.required],
+      originalUrl: ['', [Validators.required, Validators.pattern('^(http|https)://[^ "]+$')]],
+      length: [null, [Validators.required, Validators.min(1)]],
+      shareDescription: ['', Validators.required]
+    });
   }
 
-  shareVideo(): void {
-    this.errorMessage = "";
-    if (!this.currentUser) {
-      this.errorMessage = "Videó megosztásához jelentkezz be.";
+  async onSubmit(): Promise<void> {
+    if (this.videoForm.invalid) {
+      this.errorMessage = "Kérjük, töltse ki az összes kötelező mezőt helyesen.";
+      this.videoForm.markAllAsTouched();
       return;
     }
-    if (!this.title.trim() || !this.description.trim() || !this.url.trim() || this.lengthInSeconds === null || this.lengthInSeconds <= 0) {
-      this.errorMessage = "Minden mező kitöltése kötelező, a hossznak pozitív számnak kell lennie.";
-      return;
-    }
-    // xd
-    try {
-      new URL(this.url);
-    } catch (_) {
-      this.errorMessage = "Érvénytelen URL formátum.";
-      return;
-    }
+    this.errorMessage = '';
 
-    const newVideo: Video = {
-      id: Date.now().toString(),
-      title: this.title.trim(),
-      originalUrl: this.url.trim(),
-      length: this.lengthInSeconds,
-      sharerId: this.currentUser.id,
-      shareDescription: this.description.trim(),
-      shareDate: Date.now()
+    const currentUser = this.authService.getCurrentUser();
+    if (!currentUser || !currentUser.id) {
+      console.error(currentUser);
+      this.errorMessage = "Videó megosztásához jelentkezzen be.";
+      this.isSubmitting = false;
+      return;
+    }
+    const currentUserId = currentUser.id;
+
+    this.isSubmitting = true;
+
+    const videoData = {
+      title: this.videoForm.value.title,
+      originalUrl: this.videoForm.value.originalUrl,
+      length: Number(this.videoForm.value.length),
+      shareDescription: this.videoForm.value.shareDescription,
     };
 
-    Videos.unshift(newVideo);
-    this.clearForm();
-    this.videoShared.emit();
-  }
-
-  clearForm(): void {
-    this.title = '';
-    this.description = '';
-    this.url = '';
-    this.lengthInSeconds = null;
-  }
-
-  isFormValid(): boolean {
-    return this.title.trim() !== "" && this.description.trim() !== "" && this.url.trim() !== "" && this.lengthInSeconds !== null && this.lengthInSeconds > 0;
+    try {
+      await this.videosService.createVideo(videoData, currentUserId);
+      this.videoForm.reset();
+      this.videoShared.emit();
+    } catch (error) {
+      console.error('Error sharing video:', error);
+      this.errorMessage = "Hiba történt a videó megosztása közben. Próbálja újra később.";
+    } finally {
+      this.isSubmitting = false;
+    }
   }
 }

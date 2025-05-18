@@ -9,7 +9,7 @@
         {{ video.length | secsToHumantime }}
     </p>
     <p><strong>Megosztó:</strong>
-        {{ video.sharerId }}
+        {{ (video.sharer.id | userIdToUsername | async) || 'Töltés...' }}
     </p>
     <p><strong>Megosztva:</strong>
         {{ video.shareDate | unixToHumandatetime }}

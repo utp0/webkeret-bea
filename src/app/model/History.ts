@@ -1,5 +1,8 @@
+import { DocumentReference } from "@angular/fire/firestore";
+
 export interface ViewHistory {
-    userId: string;
-    videoId: string;
-    timestamp: number;  // unix
+    id: string;
+    userId: DocumentReference;
+    videoId: DocumentReference;
+    timestamp: number;
 }
