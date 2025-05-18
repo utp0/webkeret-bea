@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 
 import { Auth as NgFireAuthToken } from '@angular/fire/auth';
-import { Auth as FirebaseSDKAuth, User as FirebaseSDKUser, onAuthStateChanged } from 'firebase/auth';
+import { Auth as FirebaseSDKAuth, User as FirebaseSDKUser, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 
 import { map, switchMap, tap, shareReplay } from 'rxjs/operators';
 
@@ -63,5 +63,36 @@ export class AuthService {
     getUserById(id: string): Observable<AppUserModel | undefined> {
         const userDocRef = doc(this.firestore, `users/${id}`);
         return docData(userDocRef, { idField: 'id' }) as Observable<AppUserModel | undefined>;
+    }
+
+    async login(email: string, password: string): Promise<FirebaseSDKUser | null> {
+        try {
+            const userCredential = await signInWithEmailAndPassword(this.firebaseSDKAuth, email, password);
+            console.log('Logged in:', userCredential.user);
+            return userCredential.user;
+        } catch (error) {
+            console.error('Login error:', error);
+            return null;
+        }
+    }
+
+    async register(email: string, password: string): Promise<FirebaseSDKUser | null> {
+        try {
+            const userCredential = await createUserWithEmailAndPassword(this.firebaseSDKAuth, email, password);
+            console.log('Registered:', userCredential.user);
+            return userCredential.user;
+        } catch (error) {
+            console.error('Registration error:', error);
+            return null;
+        }
+    }
+
+    async logout(): Promise<void> {
+        try {
+            await signOut(this.firebaseSDKAuth);
+            console.log('Logged out');
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
     }
 }

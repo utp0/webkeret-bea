@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
+  standalone: true,
   imports: [RouterOutlet, VideoListitemComponent, NgFor, VideoShareFormComponent, AsyncPipe],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'

@@ -5,7 +5,7 @@
         {{errorMessage}}
     </div>
 
-    <div *ngIf="authService.currentUser$ | async as user; else notLoggedInOrLoading">
+    <div *ngIf="authService.firebaseUser$ | async as firebaseUser; else notLoggedInOrLoading">
         <div *ngIf="viewHistory$ | async as historyEntries; else loadingHistory">
             <div *ngIf="historyEntries.length === 0 && !errorMessage" class="no-history">
                 Nincsenek megtekintési előzmények.

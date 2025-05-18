@@ -1,4 +1,4 @@
-<div *ngIf="authService.currentUser$ | async as user" class="comment-form-container">
+<div *ngIf="authService.firebaseUser$ | async as firebaseUser" class="comment-form-container">
     <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="fill">
             <mat-label>Új komment írása</mat-label>

@@ -1,6 +1,6 @@
 <div class="video-share-form-container">
-    <h3 *ngIf="authService.currentUser$ | async as user">Új videó megosztása</h3>
-    <div *ngIf="authService.currentUser$ | async as user">
+    <h3 *ngIf="authService.firebaseUser$ | async as firebaseUser">Új videó megosztása</h3>
+    <div *ngIf="authService.firebaseUser$ | async as firebaseUser">
         <form [formGroup]="videoForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
                 <mat-label>Videó címe</mat-label>
